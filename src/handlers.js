@@ -25,7 +25,7 @@ exports.initGroup = async ctx => {
   log.info('initGroup()', chatId);
 
   if (!isGroup(type) || existsGroupSavedData(groupKey, state)) {
-    const msg = 'Este grupo ya ha sido inicializado';
+    const msg = 'Grup telah hangus canda hangus (inisialisasi)';
     log.info(msg, chatId);
     ctx.reply(msg);
     return
@@ -34,10 +34,10 @@ exports.initGroup = async ctx => {
   const totalMembers = await ctx.telegram.getChatMembersCount(chatId);
 
   state.groups[groupKey] = { totalMembers, members: [] };
-  log.info(`Inicializado nuevo grupo con id ${chatId} y ${totalMembers} usuarios`);
+  log.info(`Inisialisasi member grup ${chatId} y ${totalMembers} usuarios`);
 
   saveState();
-  ctx.reply('El grupo ha sido inicializado');
+  ctx.reply('Grup telah diinisialisasi relokasi asuransi dan babi');
 }
 
 exports.messageHandler = ctx => {
@@ -46,7 +46,7 @@ exports.messageHandler = ctx => {
   log.info(`messageHandler() on chat ${chatId} from user ${userId}`);
 
   if (!isGroup(type)) {
-    log.info('Este comando sólo funciona en grupos', type);
+    log.info('Perintah ini hanya bekerja pada group', type);
     return;
   }
 
@@ -56,7 +56,7 @@ exports.messageHandler = ctx => {
   }
 
   if (!username) {
-    log.info(`El usuario ${userId} no tiene establecido un nick`, username);
+    log.info(`User grup ${userId} nickname atau username`, username);
     return;
   }
 
@@ -67,7 +67,7 @@ exports.messageHandler = ctx => {
   }
 
   if (members.includes(username)) {
-    log.info(`El usuario ${username} ya está almacenado en el chat ${chatId}`);
+    log.info(`User ${username} Id grup ${chatId}`);
     return;
   }
 
@@ -91,14 +91,14 @@ exports.mentionAllHandler = (ctx) => {
   }
 
   if (!existsGroupSavedData(groupKey, state)) {
-    const msg = 'El grupo no ha sido inicializado';
+    const msg = 'Data grup disimpan';
     log.info(msg, chatId);
     ctx.reply(msg);
     return;
   }
 
   if (stillNoSavedMembers(groupKey, state)) {
-    const msg = 'No hay información almacenada sobre los miembros de este grupo';
+    const msg = 'Informasi grup telah disimpan di kulkas supaya ga gampang busuk awokwok';
     log.info(msg, chatId);
     ctx.reply(msg);
     return;
